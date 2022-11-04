@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>
+        <%= locals.title%>
+    </title>
+    <script src="https://kit.fontawesome.com/df9c5d88df.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/home.css">
+
+</head>
+
+<body>
+    <div class="todo-app">
+        <h2>TODO APP</h2>
+        <div class="app">
+
+            <!-- form -->
+            <form action="/create-task" method="POST" class="header">
+                <p>Enter Task</p>
+                <input type="text" name="name" placeholder="" required>
+                <p>Due Date/Category</p>
+                <input type="text" name="date" placeholder="" required>
+
+                <button type="submit">Add Task</button>
+            </form>
+
+            <div class="list">
+                <p><b>TODO LIST</b></p>
+
+                <!-- list -->
+                <ul class="ul-list">
+                    <% for (let i of todo_list) { %>
+
+                    <div class="m">
+                        <li class=list-item>
+                            <p><%= i.name %></p>
+
+                        </li>
+                        <li class=list-item>
+                            <p><%= i.date %></p>
+
+                        </li>
+                        <button class="delete-button"><a href="/delete-task/?id=<%= i.id %>"><i
+                                    class="far fa-times-circle fa-2x"></i>
+
+                            </a></button>
+                    </div>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
